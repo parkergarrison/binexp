@@ -1,4 +1,4 @@
-# Binary Exploitation at SELF 2018
+# Binary Exploitation 2018
 ## Parker Garrison
 
 ```
